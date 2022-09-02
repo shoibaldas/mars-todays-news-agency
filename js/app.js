@@ -50,26 +50,33 @@ const displayNewsByCategory = (data) => {
         newsDiv.innerHTML = `
         <div
                 class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-full hover:bg-gray-100">
-                <img class="object-cover w-full h-96 rounded-t-lg ml-4 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                <img class="object-cover w-full h-96 rounded-t-lg p-4 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
                     src="${thumbnail_url}" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">${title}</h5>
-                    <p class="mb-3 font-normal text-gray-400">${details}</p>
-                    <div class="flex justify-between">
+                    <p class="mb-3 font-normal text-gray-400">${details.slice(0, 300)}...</p>
+                    <div class="flex justify-between items-center">
                         <div class="flex">
                             <div>
                                 <img class="object-contain w-12 rounded-full" src="${img}" alt="">
                             </div>
                             <div class="ml-2">
-                                <p>${name ? name : "No data Available"}</p>
-                                <p>${published_date}</p>
+                                <p class="font-semibold">${name ? name : "No data Available"}</p>
+                                <p class="text-gray-400">${published_date}</p>
                             </div>
                         </div>
                         <div class="ml-2">
-                            <p>Views: ${total_view > 0 ? total_view : "No Data Available"}</p>
+                            <p><i class="fa-solid fa-eye text-violet-700"></i> ${total_view > 0 ? total_view : "No Data Available"}</p>
+                        </div>
+                        <div class="text-violet-700">
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
                         </div>
                         <div>
-                            <i class="fa-brands fa-readme"></i>
+                            <button class="text-violet-700"><i class="fa-brands fa-readme"></i></button>
                         </div>
                     </div>
                 </div>
