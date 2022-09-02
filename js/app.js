@@ -12,13 +12,73 @@ const displayNewsCategories = (data) => {
 
     data.forEach(category => {
         //console.log(category);
-        const { category_name } = category;
+        const { category_name, category_id } = category;
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
         newsDiv.innerHTML = `
-        <a class="block p-3" href="#">${category_name}</a>`;
+        <a class="block p-3 md:hover:text-violet-700 md:no-underline md:hover:underline md:decoration-2 md:decoration-violet-700 md:underline-offset-8" href="#" onclick="showcard('${category_id}')">${category_name}</a>`;
         newsCategory.appendChild(newsDiv);
     });
 }
 
-newsCategories()
+
+
+const getNewFromCategories = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    displayNewsByCategory(data.data);
+}
+
+const showcard = (category_id) => {
+
+    getNewFromCategories(category_id);
+}
+
+const displayNewsByCategory = (data) => {
+    const getIdByCategory = document.getElementById('display-news');
+    getIdByCategory.textContent = '';
+
+    data.forEach(newsElement => {
+        const { thumbnail_url, author, title, details, rating, total_view } = newsElement;
+        const { img, name, published_date } = author;
+        const { number } = rating;
+        const newsDiv = document.createElement('div');
+        newsDiv.classList.add('col');
+
+        newsDiv.innerHTML = `
+        <div
+                class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-full hover:bg-gray-100">
+                <img class="object-cover w-full h-96 rounded-t-lg ml-4 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                    src="${thumbnail_url}" alt="">
+                <div class="flex flex-col justify-between p-4 leading-normal">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">${title}</h5>
+                    <p class="mb-3 font-normal text-gray-400">${details}</p>
+                    <div class="flex justify-between">
+                        <div class="flex">
+                            <div>
+                                <img class="object-contain w-12 rounded-full" src="${img}" alt="">
+                            </div>
+                            <div class="ml-2">
+                                <p>${name ? name : "No data Available"}</p>
+                                <p>${published_date}</p>
+                            </div>
+                        </div>
+                        <div class="ml-2">
+                            <p>Views: ${total_view > 0 ? total_view : "No Data Available"}</p>
+                        </div>
+                        <div>
+                            <i class="fa-brands fa-readme"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        getIdByCategory.appendChild(newsDiv);
+    })
+}
+
+newsCategories();
+getNewFromCategories();

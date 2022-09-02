@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3313ac15c6.js" crossorigin="anonymous"></script>
     <!-- Tailwind CDN Link -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Site Title -->
@@ -59,6 +60,40 @@
             <div id="news-category" class="md:flex md:justify-evenly font-semibold text-gray-500 mt-4">
 
             </div>
+        </section>
+        <!-- Search Output Text-->
+        <section>
+            <div class="">
+
+            </div>
+        </section>
+        <!-- Sort By View section -->
+        <section class="mt-4 container">
+            <div class="flex flex-row justify-between">
+                <div class="flex">
+                    <div>
+                        <h4 class="text-black font-semibold">Sort By View:</h4>
+                    </div>
+                    <div class="mx-2">
+                        <input class="p-1 w-3/5" type="text" name="" id="" placeholder="Default">
+                    </div>
+                </div>
+                <div class="flex text-violet-700 font-semibold space-x-3 ">
+                    <div>
+                        <button class="border px-2 py-1 rounded hover:bg-violet-700 hover:text-gray-200">Todays's
+                            Pick</button>
+                    </div>
+                    <div>
+                        <button
+                            class="border rounded px-2 py-1 hover:bg-violet-700 hover:text-gray-200">Trending</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- News Card Start-->
+        <section id="display-news" class="mt-6 flex flex-col justify-center gap-y-4">
+            <!-- <label onclick="viewnewsDetails('${_id}')" for="my-modal-3"
+                                                            class="btn modal-button">Details</label> -->
         </section>
     </main>
     <script src="js/nav.js"></script>
