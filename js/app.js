@@ -103,12 +103,12 @@ const displayNewsByCategory = (data, element) => {
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-600">${title ? title : "No data Available"}</h5>
                     <p class="mb-3 font-normal text-gray-400">${details.slice(0, 280)}...</p>
                     <div class="flex justify-between items-center">
-                        <div class="flex">
+                        <div class="flex text-sm md:text-base">
                             <div>
                                 <img class="object-contain w-12 rounded-full" src="${img ? img : "No data Available"}" alt="">
                             </div>
                             <div class="ml-2">
-                                <p class="font-semibold">${name ? name : "No data Available"}</p>
+                                <p class="text-gray-600 font-semibold">${name ? name : "No data Available"}</p>
                                 <p class="text-gray-400">${published_date ? published_date : "No data Available"}</p>
                             </div>
                         </div>
