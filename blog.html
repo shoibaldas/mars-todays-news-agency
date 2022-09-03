@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3313ac15c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <!-- Tailwind CDN Link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Site Title -->
+    <title>Mars Today's News</title>
+</head>
+
+<body class="bg-[#f6f6f6] p-5">
+    <!-- navbar starts here -->
+    <header>
+        <div class="container mx-auto items-center flex justify-between">
+            <div>
+                <h1 class="md:text-2xl text-violet-700 md:font-bold sm:text-xl sm:font-semibold"><span
+                        class="bg-violet-700 md:text-2xl md:font-bold sm:text-xl sm:font-semibold text-gray-100 rounded p-2">Mars
+                        Today's</span> News</h1>
+
+            </div>
+
+            <button id="toggle" class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <nav id="nav"
+                class="fixed top-6 bottom-0 -right-full text-gray-400 font-semibold w-52 md:w-auto md:static transition-all">
+                <ul class="md:flex menu menu-compact dropdown-content mt-3 p-2">
+                    <li>
+                        <a class="block p-3  md:hover:text-violet-700 md:no-underline md:hover:underline md:decoration-2 md:decoration-violet-700 md:underline-offset-8"
+                            href="index.html">News</a>
+                    </li>
+                    <li>
+                        <a class="block p-3  md:hover:text-violet-700 md:no-underline md:hover:underline md:decoration-2 md:decoration-violet-700 md:underline-offset-8"
+                            href="blog.html">Blog</a>
+                    </li>
+                    <li class="relative my-2 mx-5 md:visible">
+                        <img class="h-8 w-8 rounded-full"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- underline under navbar -->
+        <div class="md:border-t-2 border-gray-300">
+
+        </div>
+    </header>
+    <main>
+    </main>
+    <script src="js/nav.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+</body>
+
+</html>
