@@ -19,9 +19,8 @@ const displayNewsCategories = (data) => {
         <a class="block p-3 md:hover:text-violet-700 md:no-underline md:hover:underline md:decoration-2 md:decoration-violet-700 md:underline-offset-8" href="#" onclick="showcard('${category_id}')">${category_name}</a>`;
         newsCategory.appendChild(newsDiv);
     });
+    loadSpinner(false);
 }
-
-
 
 const getNewsFromCategories = async (id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
@@ -32,7 +31,7 @@ const getNewsFromCategories = async (id) => {
 }
 
 const showcard = (category_id) => {
-
+    loadSpinner(true);
     getNewsFromCategories(category_id);
 }
 
@@ -54,7 +53,7 @@ const displayNewsByCategory = (data) => {
                     src="${thumbnail_url}" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">${title}</h5>
-                    <p class="mb-3 font-normal text-gray-400">${details.slice(0, 300)}...</p>
+                    <p class="mb-3 font-normal text-gray-400">${details.slice(0, 400)}...</p>
                     <div class="flex justify-between items-center">
                         <div class="flex">
                             <div>
@@ -84,6 +83,7 @@ const displayNewsByCategory = (data) => {
         `;
         getIdByCategory.appendChild(newsDiv);
     })
+    loadSpinner(false);
 }
 
 const modalDataView = async (news_id) => {
@@ -120,6 +120,18 @@ const modalDataAdd = (data) => {
     `;
 
     getData.appendChild(newsDiv);
+    loadSpinner(false);
+}
+
+const loadSpinner = (isLoad) => {
+    const loadingData = document.getElementById('circle-spinner');
+
+    if (isLoad) {
+        loadingData.classList.remove('invisible');
+    }
+    else {
+        loadingData.classList.add('invisible');
+    }
 }
 
 newsCategories();
