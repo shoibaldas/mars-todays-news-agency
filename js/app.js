@@ -76,7 +76,7 @@ const displayNewsByCategory = (data) => {
                             <i class="fa-regular fa-star"></i>
                         </div>
                         <div>
-                            <button class="text-violet-700" onclick="modalDataView('${_id}') type="button" data-modal-toggle="medium-modal"><i class="fa-brands fa-readme"></i></button>
+                            <label onclick="modalDataView('${_id}')" for="my-modal-3" class="text-violet-700"><i class="fa-brands fa-readme"></i></label>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ const displayNewsByCategory = (data) => {
     })
 }
 
-const modalDataView = async (news_id, id) => {
+const modalDataView = async (news_id) => {
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -95,7 +95,7 @@ const modalDataView = async (news_id, id) => {
 }
 
 const modalDataAdd = (data) => {
-    const { author, thumbnail_url } = data;
+    const { author, thumbnail_url, title, details } = data;
     const { img, name, published_date } = author;
 
     const getData = document.getElementById('modal-view');
@@ -103,19 +103,20 @@ const modalDataAdd = (data) => {
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
     newsDiv.innerHTML = `
-                    <img class="object-cover w-full h-96 rounded-t-lg p-4 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                src="${thumbnail_url}" alt="">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">${title}</h5>
-                    <div class="flex">
-                        <div>
-                            <img class="object-contain w-12 rounded-full" src="${img}" alt="">
-                        </div>
-                        <div class="ml-2">
-                            <p class="font-semibold">${name ? author.name : "No data Available"}</p>
-                            <p class="text-gray-400">${published_date}</p>
-                        </div>
+                    <img class="object-cover w-full h-96 rounded-t-lg p-4 md:h-2/5 md:w-full md:rounded-none md:rounded-l-lg"
+                    src="${thumbnail_url}" alt="">
+                    <h5 class="mt-2 text-2xl font-bold tracking-tight text-gray-200">${title}</h5>
+                <div class="flex items-center mt-4 mb-4">
+                    <div>
+                        <img class="object-contain w-12 rounded-full" src="${img}" alt="">
                     </div>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">${details}</p>
+                    <div class="ml-2">
+                        <p class="font-semibold">${name ? name : "No data Available"}</p>
+                        <p class="text-gray-400">${published_date}</p>
+                    </div>
+                    
+                </div>
+                <p class="mb-3 font-normal text-justify text-gray-200">${details}</p>
     `;
 
     getData.appendChild(newsDiv);
